@@ -50,4 +50,4 @@ it.only('Check Is Correct attr in button', ()=> {
         .should('eq', 'https://next.privat24.ua/?lang=en')
 })
 
-// test 6 master
+// test 7 master

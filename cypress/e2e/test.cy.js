@@ -12,7 +12,28 @@ describe("Assertion", function(){
 
     const login = new Login()
 
-    it('Assert test web', () => {
+    it('loginPositiveCase', () => {
+        
+        login.settings()
+
+        login.btnLogin()
+        .should('be.visible')
+        .click()
+
+        login.email()
+        .type(email)
+        .should('have.value', email)
+
+        login.password()
+        .type(correctPass)
+        .should('have.value', correctPass)
+
+        login.clickBtnLogin()
+        .should('be.visible')
+        .click()
+    });
+
+    it('loginIncorrectPass', () => {
         cy.visit("https://unsplash.com/")
         cy.viewport(1920, 1080)
         cy.location('protocol').should('eq', 'https:')
@@ -26,9 +47,31 @@ describe("Assertion", function(){
         .type(email)
         .should('have.value', email)
 
-        // login.password()
-        // .type(correctPass)
-        // .should('have.value', correctPass)
+       login.password()
+        .type(incorrectPass)
+        .should('have.value', incorrectPass)
+
+        login.clickBtnLogin()
+        .should('be.visible')
+        .click()
+
+        cy.contains('Invalid email or password.')
+        .should('be.visible')
+    });
+
+    it('loginIncorrectEmail', () => {
+        cy.visit("https://unsplash.com/")
+        cy.viewport(1920, 1080)
+        cy.location('protocol').should('eq', 'https:')
+        cy.title().should('eq', 'Beautiful Free Images & Pictures | Unsplash')
+
+        login.btnLogin()
+        .should('be.visible')
+        .click()
+
+        login.email()
+        .type(email)
+        .should('have.value', email)
 
         login.password()
         .type(incorrectPass)
@@ -38,6 +81,7 @@ describe("Assertion", function(){
         .should('be.visible')
         .click()
 
-        cy.contains('Invalid email or password.').should('be.visible')
+        cy.contains('Invalid email or password.')
+        .should('be.visible')
     });
 })

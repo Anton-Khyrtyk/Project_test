@@ -34,10 +34,8 @@ describe("Assertion", function(){
     });
 
     it('loginIncorrectPass', () => {
-        cy.visit("https://unsplash.com/")
-        cy.viewport(1920, 1080)
-        cy.location('protocol').should('eq', 'https:')
-        cy.title().should('eq', 'Beautiful Free Images & Pictures | Unsplash')
+
+        login.settings()
 
         login.btnLogin()
         .should('be.visible')
@@ -60,10 +58,8 @@ describe("Assertion", function(){
     });
 
     it('loginIncorrectEmail', () => {
-        cy.visit("https://unsplash.com/")
-        cy.viewport(1920, 1080)
-        cy.location('protocol').should('eq', 'https:')
-        cy.title().should('eq', 'Beautiful Free Images & Pictures | Unsplash')
+        
+        login.settings()
 
         login.btnLogin()
         .should('be.visible')

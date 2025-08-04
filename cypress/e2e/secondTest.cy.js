@@ -4,7 +4,7 @@
 //   it("Sign in", () => {
 //     cy.visit("https://unsplash.com");
 
-//     cy.get('div[class="W1Or3"]').find('a[class= "X2u6K x_EXo R6ToQ QcIGU AxdkY iSzpt R6ToQ jhw7y GYSuz CagjZ"]').click()
+//     cy.get('div[class="tHGFe"]').find('a[class= "LB2m0 XKj1X aZVYw Wm9ZP yZhvJ wmjc4"]').eq(1).click()
 //       .contains("Log in")
 //       .click({ force: true })
 //       .get('[name="email"]')
@@ -23,3 +23,16 @@
 //       .type("Dou");
 //   });
 // });
+
+describe("Log in", function () {
+    it("Sign in", () => {
+      cy.visit("https://www.saucedemo.com/");
+  
+      cy.get('[data-test="username"]')
+        .type("standard_user")
+        .get('[data-test="password"]')
+        .type("secret_sauce")
+        .get('[data-test="login-button"]')
+        .submit()
+    });
+  });
